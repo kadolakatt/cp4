@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>Formulario de Registro</title>
+        <link rel="stylesheet" href="miestilo.css" />
+    </head>
+    <body>
+        <form id="formRegistro" method="GET" action="" >
+            <h1>Registro para vacunación COVID-19</h1>
+            <br>
+            <label>Nombre</label>
+            <input name="nombre" value="" type="text" />
+            <br>
+            <label>Apellidos</label>
+            <input name="apellidos" value="" type="text" />
+            <br>
+            <div class="grupo">
+            <label>Sexo</label>
+            <input name="sexo" value="H" type="radio" /> Hombre
+            <input name="sexo" value="F" type="radio" /> Mujer
+            </div>
+            <br>
+            <label>Correo</label>
+            <input name="email" value="" type="email" required />
+            <br>
+            <label>Contraseña</label>
+            <input name="contrasena" value="" type="password" />
+            <br>
+            <div class="grupo">
+            <input name="declaracion" value="" type="checkbox" /> Declaro haber leído y aceptar las condiciones generales del programa y la normativa sobre protección de datos
+            </div>
+            <br>
+            <input class="boton" name="enviar" value="Enviar" type="submit" />
+        </form>
+    </body>
+</html>

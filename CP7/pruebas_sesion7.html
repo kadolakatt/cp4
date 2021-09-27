@@ -5,17 +5,86 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejemplos Sesión 7</title>
-    
+    <script type="text/javascript" >
+        //Función de Prueba del uso del objeto location.
+        function uso_de_location() {
+            document.write('href: '+location.href+'<br>');
+            document.write('host: '+location.host+'<br>');
+            document.write('hostname: ' + location.hostname+'<br>');
+            document.write('search: ' + location.search+'<br><br><br>');
+            setTimeout('location.replace("../formuario_covid19.html")', 5000);
+            document.write("Redirigiendo en 5 segundos...");
+        }
+        function mostrarMensaje(tipo) {
+            //Muestra un mensaje en el contenido del parrafo con id mensaje
+            var p = document.getElementById("mensaje");
+            if (tipo == "over") {
+                p.innerText = "El mouse se encuentra sobre la imagen...";
+            }else {
+                if (tipo == "out") {
+                    p.innerText = "El mouse NO se encuentra sobre la imagen...";
+                }else {
+                    p.innerText = tipo;
+                }
+            }
+        }
+
+        function mostrarMensaje2(tipo) {
+            //Muestra un mensaje en el contenido del parrafo con id mensaje2
+            var p = document.getElementById("mensaje2");
+            if (tipo == "over") {
+                p.innerText = "El mouse se encuentra sobre la imagen...";
+            }else {
+                if (tipo == "out") {
+                    p.innerText = "El mouse NO se encuentra sobre la imagen...";
+                }else {
+                    p.innerText = tipo;
+                }
+            }
+        }
+    </script>
 </head>
 <body>
+    <!-- Element button que abre una ventana nueva -->
     <button type="button" 
         onclick="window.open('../formuario_covid19.html','ventana1',
                             'toolbar=no,menubar=no,status=yes,width=800,height=600,resizable=no');" >
         Abrir Ventana
     </button>
-
+    
+    <!-- Uso del cuadro de dialogo confirm, para que el usuario confirme o cancel determinada operación -->
     <button type="button" onclick="var respuesta = confirm('¿Está seguro de continuar?'); alert(respuesta);">Confirmar Operación</button>
 
+    <!-- Uso de setTimeOut para cerrar automaticamente una ventana despues de cierto tiempo -->
     <button type="button" onclick="setTimeout('window.close()',5000);"> setTimeOut</button>
+
+    <!-- Invoca la función de uso del objeto location -->
+    <button type="button" onclick="uso_de_location();">Uso de Location</button>
+
+    <!-- Control de eventos a través de los atributos gestores -->
+    <!-- mouseover = evento ocurre cuando el puntero del mouse se posiciona sobre un elemento  -->
+    <!-- mouseout = evento ocurre cuando el puntero del mouse sale del elemento -->
+    <img src="img/eye.png" alt="Imagen de Prueba" 
+         onclick="alert('Hiciste clic sobre la imagen.');"
+         onmouseover="mostrarMensaje('over');"
+         onmouseout="mostrarMensaje('out');" />
+    
+    <!-- Parrafos para mostrar mensajes de eventos -->
+    <p id="mensaje" ></p>
+    <p id="mensaje2" ></p>
+    
+    <!-- Inputs para mostrar el uso de atributos gestores de evento onfocus onblur onchange onkeypress  -->
+    <!-- onfocus: ocurre cuando el foco se centra en el elemento. -->
+    <!-- onblur: ocurre cuando el elemento pierde el foco -->
+    <!-- onchange: ocurre cuando se modifica el valor del input -->
+    <!-- onkeypress: ocurre cuando se presiona una tecla en input -->
+    <input type="text" placeholder="Nombre" 
+           onfocus="mostrarMensaje('focus');" 
+           onblur="mostrarMensaje('blur');"
+           onchange="mostrarMensaje2(this.value);"
+           onkeypress="mostrarMensaje2(this.value);" />
+    <input type="text" placeholder="Apellidos" 
+           onfocus="mostrarMensaje('focus');" 
+           onblur="mostrarMensaje('blur');" />
 </body>
 </html>
